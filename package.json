@@ -1,0 +1,11 @@
+{
+  "name": "PhantomJSTest",
+  "version": "0.0.1",
+  "dependencies": {
+    "async": "*",
+    "phantomjs": "*",
+    "underscore": "*",
+    "url": "*",
+    "util": "*"
+  }
+}

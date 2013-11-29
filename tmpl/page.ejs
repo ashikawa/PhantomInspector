@@ -1,0 +1,17 @@
+## <%- setting.name %>
+
+url : <%- setting.url %>
+<% if (setting.userAgent) { %>userAgent : <%- setting.userAgent %><% } %>
+<%
+    for(var i = 0; i < records.length; i++) {
+        response = records[i];
+        parsed   = url.parse(response.url, true, true);
+        parsed.query = JSON.stringify(parsed.query, null, 2);
+%>
+### Request URL : <%- parsed.protocol %>//<%- parsed.hostname %><%- parsed.pathname %>
+
+Status : <%- response.status %>
+Content-Type : <%- response.contentType %>
+Query : <%- parsed.query %>
+
+<% } %>
