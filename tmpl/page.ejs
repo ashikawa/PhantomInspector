@@ -6,12 +6,13 @@ url : <%- setting.url %>
     for(var i = 0; i < records.length; i++) {
         response = records[i];
         parsed   = url.parse(response.url, true, true);
-        parsed.query = JSON.stringify(parsed.query, null, 2);
+        // parsed.query = JSON.stringify(parsed.query, null, 2);
 %>
 ### Request URL : <%- parsed.protocol %>//<%- parsed.hostname %><%- parsed.pathname %>
 
 Status : <%- response.status %>
 Content-Type : <%- response.contentType %>
-Query : <%- parsed.query %>
-
+Query :
+<% for (var key in parsed.query) { %>
+    <%- analytics.convert(key) %> : <%- parsed.query[key] %><% } %>
 <% } %>

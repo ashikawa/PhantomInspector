@@ -7,13 +7,10 @@
     var config     = require('./config').setting,
         _          = require('underscore'),
         // util       = require('util'),
-        url        = require('url'),
         webpage    = require('webpage'),
         async      = require('async'),
-        ejs        = require('ejs'),
-        template   = require('fs').read('./tmpl/page.ejs'),
         asyncStack = [],
-        timeout    = 1500;
+        timeout    = 1000;
 
     _(config).each(function (setting, key, config) {
 
@@ -26,12 +23,8 @@
                 page.settings.userAgent  = setting.userAgent;
             }
 
-            function render() {
-                console.log(ejs.render(template, {
-                    setting: setting,
-                    records: records,
-                    url: url
-                }));
+            function pageTimeout() {
+                setting.callback.call(setting, records);
 
                 if (setting.capture) {
                     page.render(setting.capture);
@@ -42,9 +35,7 @@
 
                 if (response.stage === 'end') { return; }
 
-                if (setting.isrecord(response)) {
-                    records.push(response);
-                }
+                records.push(response);
             }
 
             function pageOpen(status) {
@@ -56,7 +47,7 @@
                 }
 
                 setTimeout(function () {
-                    render();
+                    pageTimeout();
                     page.close();
                     callback();
                 }, timeout);
