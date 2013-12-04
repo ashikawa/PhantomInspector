@@ -24,7 +24,7 @@
             }
 
             function pageTimeout() {
-                setting.callback.call(setting, records);
+                setting.callback(records);
 
                 if (setting.capture) {
                     page.render(setting.capture);
@@ -42,6 +42,9 @@
 
                 if (status !== 'success') {
                     console.log('FAIL to load the address');
+
+                    page.close();
+                    callback();
 
                     return;
                 }
