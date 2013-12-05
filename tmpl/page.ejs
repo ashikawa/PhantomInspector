@@ -7,24 +7,23 @@ URL
 : <%- setting.url %>
 
 <% if (setting.userAgent) { %>UserAgent
-: <%- setting.userAgent %><% } %>
-
+: <%- setting.userAgent %>
+<% } %>
 <% if (setting.capture) { %>Capture
-: ![capture](<%- setting.capture %>)<% } %>
+: ![capture](<%- setting.capture %>)
+<% } %>
 
 ### Metas
 
 |name|property|content|
 |---|---|---|<% for(var i = 0; i < metas.length; i++) { %>
-|<%- metas[i].name %> |<%- metas[i].property %> |<%- metas[i].content.replace(/\|/g, '\\|') %> |
-<% } %>
-
+|<%- metas[i].name %> |<%- metas[i].property %> |<%- metas[i].content.replace(/\|/g, '\\|') %> |<% } %>
 <%
     for(var i = 0; i < records.length; i++) {
         response = records[i];
         parsed   = url.parse(response.url, true, true);
 %>
-### Becon (\# <%- i %>)
+### Analytics Becon (\# <%- i %>)
 
 |param|value|
 |---|---|<% for (var key in parsed.query) { %>
