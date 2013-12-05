@@ -22,8 +22,8 @@
 
         function process(callback) {
 
-            var page    = webpage.create(),
-                records = [];
+            var page     = webpage.create(),
+                networks = [];
 
             if (setting.userAgent) {
                 page.settings.userAgent  = userAgents[setting.userAgent] || setting.userAgent;
@@ -36,7 +36,7 @@
             }
 
             function pageTimeout() {
-                setting.callback(records);
+                setting.callback(page, networks);
 
                 if (setting.capture) {
                     page.render(setting.capture);
@@ -47,7 +47,7 @@
 
                 if (response.stage === 'end') { return; }
 
-                records.push(response);
+                networks.push(response);
             }
 
             function pageOpen(status) {
