@@ -1,18 +1,21 @@
-## <%- setting.name %>
+## [<%- setting.name %>](<%- setting.url %>)
 
-url : <%- setting.url %>
-<% if (setting.userAgent) { %>userAgent : <%- setting.userAgent %><% } %>
+URL
+: <%- setting.url %>
+
+<% if (setting.userAgent) { %>UserAgent
+: <%- setting.userAgent %><% } %>
+
+<% if (setting.capture) { %>Capture
+: ![capture](<%- setting.capture %>)<% } %>
 <%
     for(var i = 0; i < records.length; i++) {
         response = records[i];
         parsed   = url.parse(response.url, true, true);
-        // parsed.query = JSON.stringify(parsed.query, null, 2);
 %>
-### Request URL : <%- parsed.protocol %>//<%- parsed.hostname %><%- parsed.pathname %>
+### Becon (\# <%- i %>)
 
-Status : <%- response.status %>
-Content-Type : <%- response.contentType %>
-Query :
-<% for (var key in parsed.query) { %>
-    <%- analytics.convert(key) %> : <%- parsed.query[key] %><% } %>
+|param|value|
+|---|---|<% for (var key in parsed.query) { %>
+|<%- analytics.convert(key) %>|<%- parsed.query[key].replace(/\|/g, '\\|') %>|<% } %>
 <% } %>

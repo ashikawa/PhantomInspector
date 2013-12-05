@@ -74,6 +74,9 @@
     };
 
     exports.convert = function (value) {
-        return paramators[value] || value;
+        if (paramators[value]) {
+            return paramators[value] + '(' + value + ')';
+        }
+        return value;
     };
 }());
