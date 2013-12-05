@@ -28,6 +28,12 @@
             if (setting.userAgent) {
                 page.settings.userAgent  = userAgents[setting.userAgent] || setting.userAgent;
             }
+            if (setting.userName) {
+                page.settings.userName  = setting.userName;
+            }
+            if (setting.password) {
+                page.settings.password  = setting.password;
+            }
 
             function pageTimeout() {
                 setting.callback(records);
@@ -48,6 +54,8 @@
 
                 if (status !== 'success') {
                     console.log('FAIL to load the address');
+                    console.log(setting.url);
+                    console.log('STATUS: ' + status);
 
                     page.close();
                     callback();

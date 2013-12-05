@@ -27,17 +27,19 @@
     setting = [
         {
             'name': 'トップ (PC)',
-            'url': 'http://example.com/',
+            'url': 'http://www.example.com/',
             'callback': analyticsRequest,
             // 'userAgent': 'iPhone',
-            // 'capture': 'img/capture.png'
+            'capture': 'img/capture.png',
+            'userName': 'yayoimtadmin',
+            'password': 'QuWQzu4q',
         },
-        {
-            'name': 'トップ (SP)',
-            'url': 'http://example.com/',
-            'callback': analyticsRequest,
-            'userAgent': 'iPhone'
-        }
+        // {
+        //     'name': 'トップ (SP)',
+        //     'url': 'http://example.com/',
+        //     'callback': analyticsRequest,
+        //     'userAgent': 'iPhone'
+        // }
     ];
 
     exports.setting = setting;
