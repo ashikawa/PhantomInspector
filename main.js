@@ -36,7 +36,7 @@
             }
 
             function pageTimeout() {
-                setting.callback(page, networks);
+                setting.callback(page, networks, setting);
 
                 if (setting.capture) {
                     page.render(setting.capture);
