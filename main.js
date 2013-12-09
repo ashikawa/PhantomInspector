@@ -36,7 +36,15 @@
             }
 
             function pageTimeout() {
-                setting.callback(page, networks, setting);
+
+                if (_.isFunction(setting.callback)) {
+                    setting.callback(page, networks, setting);
+                } else {
+                    _(setting.callback).each(function (value, i) {
+                        value(page, networks, setting);
+                    });
+                }
+
 
                 if (setting.capture) {
                     page.render(setting.capture);
