@@ -35,14 +35,28 @@
                 page.settings.password  = setting.password;
             }
 
+            function onOpen() {
+                if (setting.onOpen) {
+                    if (_.isFunction(setting.onOpen)) {
+                        setting.onOpen(page, networks, setting);
+                    } else {
+                        _(setting.onOpen).each(function (value, i) {
+                            value(page, networks, setting);
+                        });
+                    }
+                }
+            }
+
             function pageTimeout() {
 
-                if (_.isFunction(setting.callback)) {
-                    setting.callback(page, networks, setting);
-                } else {
-                    _(setting.callback).each(function (value, i) {
-                        value(page, networks, setting);
-                    });
+                if (setting.timeout) {
+                    if (_.isFunction(setting.timeout)) {
+                        setting.timeout(page, networks, setting);
+                    } else {
+                        _(setting.timeout).each(function (value, i) {
+                            value(page, networks, setting);
+                        });
+                    }
                 }
 
 
@@ -70,6 +84,8 @@
 
                     return;
                 }
+
+                onOpen();
 
                 setTimeout(function () {
                     pageTimeout();

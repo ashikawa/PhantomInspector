@@ -21,7 +21,7 @@
         {
             'name': 'トップ (PC)',
             'url': 'http://www.example.com/',
-            'callback': analyticsRequest,
+            'timeout': analyticsRequest,
             // 'userAgent': 'iPhone',
             // 'capture': 'img/capture.png',
             // 'userName': 'xxxxx',
@@ -30,7 +30,7 @@
         // {
         //     'name': 'トップ (SP)',
         //     'url': 'http://example.com/',
-        //     'callback': analyticsRequest,
+        //     'timeout': analyticsRequest,
         //     'userAgent': 'iPhone'
         // }
     ];
