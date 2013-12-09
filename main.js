@@ -4,7 +4,9 @@
 (function () {
     'use strict';
 
-    var config     = require('./config').setting,
+    var system     = require('system'),
+        configFile = system.args[1] || './config',
+        config     = require(configFile).setting,
         _          = require('underscore'),
         // util       = require('util'),
         webpage    = require('webpage'),

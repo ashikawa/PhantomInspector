@@ -11,7 +11,7 @@ npm install
 ## Run
 
 ```
-./node_modules/phantomjs/bin/phantomjs main.js
+./phantomjs main.js ./config/mysetting 
 ```
 
 ## Setting
