@@ -28,6 +28,12 @@
             if (setting.userAgent) {
                 page.settings.userAgent  = userAgents[setting.userAgent] || setting.userAgent;
             }
+            if (setting.viewportSize) {
+                page.viewportSize  = setting.viewportSize;
+            }
+            if (setting.paperSize) {
+                page.paperSize  = setting.paperSize;
+            }
             if (setting.userName) {
                 page.settings.userName  = setting.userName;
             }
